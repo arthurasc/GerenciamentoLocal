@@ -1,0 +1,64 @@
+<div class="card" ng-controller="class-controller">
+    <div class="item item-text-wrap">
+        <div class="list">
+
+            <table>
+                <tr>
+                    <td>
+                        <label class="item item-input">
+                            <input type="number" placeholder="sala" ng-model="sala">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="curso" ng-model="curso">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="horário (00:00 às 00:00)" ng-model="horario">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="valor (000,00)" ng-model="valor">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="desconto (000,00)" ng-model="desconto">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button class="button button-positive" style="float: right" ng-click="addClass()">
+                            <i class="icon ion-ios-paperplane-outline"></i> incluir
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Turmas
+                </div>
+                <select ng-model="class" ng-change="getClass(class)">
+                    <option value="{{X.sala}}" ng-repeat="X in classData | unique: 'sala' | orderBy">Sala {{X.sala}}</option>
+                </select>
+            </label>
+
+            <div class="item item-button-right" ng-repeat="X in classData | orderBy: 'horario' | filter: {sala: class}" >
+                Sala {{X.sala}}, {{X.curso}} - {{X.horario}}
+                <button class="button button-assertive" ng-click="deleteClass(X.id, 'class', $index)">
+                    <i class="icon ion-ios-trash-outline"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

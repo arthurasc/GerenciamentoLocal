@@ -1,0 +1,121 @@
+<div class="card" ng-controller="students-controller">
+    <div class="item item-text-wrap">
+        <div class="list">
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Nome" ng-model="nome_s">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="item item-input">
+                            <input maxlength="10" type="text" placeholder="Data de nascimento" ng-keyup="setData('data')" ng-model="dtnas">
+                        </label>
+                    </td>
+                    <td colspan="2">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Telefone" ng-model="tel">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Nome do responsável" ng-model="npai">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Filiação" ng-model="fili">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Telefone" ng-model="telresp">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Celular" ng-model="celresp">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="RG" ng-model="rg">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="CPF" ng-model="cpf">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="E-Mail" ng-model="email">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Endereço" ng-model="ende">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Número" ng-model="numend">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Bairro" ng-model="bair">
+                        </label>
+                    </td>
+                    <td>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Cidade" ng-model="cid">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Cursos
+                            </div>
+                            <select ng-change="curse = curse" ng-model="curse">
+                                <option value="{{X.sala}}" ng-repeat="X in classData | unique: 'sala'">Sala {{X.sala}}</option>
+                            </select>
+                        </label>
+                    </td>
+                    <td colspan="2">
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Horários
+                            </div>
+                            <select ng-model="room" ng-change="room = room">
+                                <option value="{{X.id}}" ng-repeat="X in classData | filter: {sala: curse}">{{X.horario}}</option>
+                            </select>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button class="button button-positive" style="float: right" ng-click="addStudent()">
+                            <i class="icon ion-ios-paperplane-outline"></i> incluir
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

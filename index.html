@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de alunos</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="css/ionic.css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+
+    <div class="login" ng-controller="login-controller">
+
+        <figure></figure>
+
+        <div class="list">
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">login</span>
+                <input type="text" placeholder="login" ng-model="login">
+            </label>
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">senha</span>
+                <input type="password" placeholder="senha" ng-model="senha">
+            </label>
+
+            <button class="button button-block button-positive" ng-click="validacao()">
+                entrar
+            </button>
+
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular.route.js"></script>
+<script type="text/javascript" src="js/angular.animate.js"></script>
+<script type="text/javascript" src="js/login.controllers.js"></script>
+
+</html>

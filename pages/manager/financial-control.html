@@ -1,0 +1,173 @@
+<div class="card" ng-controller="financial-controller">
+    <div class="item item-text-wrap">
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Operação
+                </div>
+                <select ng-model="operation" ng-change="operation = operation">
+                    <option value="0">Efetuar pagamento</option>
+                    <option value="1">Consultas</option>
+                    <option value="2">Gerar financeiro</option>
+                </select>
+            </label>
+        </div>
+    </div>
+
+    <div class="item item-text-wrap" ng-if="operation == 0">
+        <div class="list" ng-controller="payments-controller">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Digite o nome do aluno" ng-model="search" ng-keyup="searchStudent()">
+            </label>
+
+            <div class="item item-button-right" ng-repeat="X in students">
+                <table>
+                    <tr>
+                        <td>{{X.nome}}</td>
+                        <td>{{X.curso}}</td>
+                        <td>{{X.horario}}</td>
+                        <td>{{X.venc}}</td>
+                        <td>R$ {{X.valor}}</td>
+                    </tr>
+                </table>
+                <button class="button button-balanced" ng-click="paymentParcel(X.venc, X.id, $index, X.valorCurso, X.descontoCurso, X.alunoId)">
+                    <i class="icon ion-ios-checkmark-outline"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="item item-text-wrap" ng-if="operation == 1">
+        <div class="list" ng-controller="queries-controller">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Digite o nome do aluno" ng-model="searchValue" ng-keyup="searchStudent()">
+            </label>
+
+            <div ng-if="selectStudent">
+                <table class="query-table">
+                    <tr>
+                        <td>
+                            Nome: {{students[0].nome}}
+                        </td>
+                        <td>
+                            Data de nascimento: {{students[0].dt_nasc}}
+                        </td>
+                        <td>
+                            Contato: {{students[0].telefone}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            Responsável: {{students[0].nome_resp}}
+                        </td>
+                        <td>
+                            Filiação: {{students[0].filiacao}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Telefone: {{students[0].telefone_resp}}
+                        </td>
+                        <td>
+                            Celular: {{students[0].celular}}
+                        </td>
+                        <td>
+                            E-Mail : {{students[0].email}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            RG: {{students[0].rg}}
+                        </td>
+                        <td>
+                            CPF: {{students[0].cpf}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            Endereço: {{students[0].endereco}}, {{students[0].numero}}
+                        </td>
+                        <td>
+                            Bairro/Cidade: {{students[0].bairro}}, {{students[0].cidade}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sala {{students[0].sala}}, {{students[0].Curso}} - {{students[0].horario}}
+                        </td>
+                        <td>
+                            Valor/Desconto: R$ {{students[0].valor}} / R$ {{students[0].desconto}}
+                        </td>
+                        <td>
+                            Dia do vencimento: {{students[0].vencimento}}
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="item item-button-right" ng-repeat="X in students | orderBy: 'venc'">
+                    <table>
+                        <tr>
+                            <td>{{X.venc}}</td>
+                            <td>{{X.valorPago}}</td>
+                        </tr>
+                    </table>
+                    <button class="button button-balanced">
+                        <i class="icon ion-ios-checkmark-outline"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div ng-if="search">
+                <div class="item item-button-right" ng-repeat="X in students">
+                    {{X.nome}}
+                    <button class="button button-balanced" ng-click="onSelectStudent(X.id)">
+                        <i class="icon ion-ios-checkmark-outline"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="item item-text-wrap" ng-if="operation == 2" ng-controller="generate-controller">
+        <div class="list">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Digite o nome do aluno" ng-model="search" ng-keyup="searchStudent()">
+            </label>
+
+            <div ng-if="addVencimento">
+                <label class="item item-input">
+                    <input type="number" placeholder="Digite a data para o vencimento do aluno" ng-model="venc.date" ng-keyup="setData()">
+                </label>
+                <button class="button button-block button-positive" ng-click="confirmDate()">
+                    <i class="icon ion-ios-loop"></i> Gerar financeiro
+                </button>
+            </div>
+
+            <div class="item item-button-right" ng-repeat="X in students | orderBy: 'nome'">
+                <table>
+                    <tr>
+                        <td>{{X.nome}}</td>
+                        <td>{{X.curso}}</td>
+                        <td>{{X.horario}}</td>
+                        <td>R$ {{X.valor}}</td>
+                        <td>R$ {{X.desconto}}</td>
+                    </tr>
+                </table>
+                <button class="button button-balanced" ng-click="generateFinancial(X.id, X.valor, X.desconto)">
+                    <i class="icon ion-ios-checkmark-outline"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

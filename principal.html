@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de alunos</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="css/ionic.css" rel="stylesheet">
+    <link href="css/ionicons.css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+
+        <nav>
+            <span class="logo"></span>
+
+            <div class="list">
+
+                <a class="item item-icon-left" href="#users">
+                    <i class="icon ion-ios-people-outline"></i>
+                    Usuários
+                </a>
+                <a class="item item-icon-left" href="#students">
+                    <i class="icon ion-ios-personadd-outline"></i>
+                    Alunos
+                </a>
+                <a class="item item-icon-left" href="#class">
+                    <i class="icon ion-ios-calendar-outline"></i>
+                    Turmas
+                </a>
+                <a class="item item-icon-left" href="#surveys">
+                    <i class="icon ion-ios-pulse"></i>
+                    Levantamentos
+                </a>
+                <a class="item item-icon-left" href="#financial">
+                    <i class="icon ion-ios-calculator-outline"></i>
+                    Financeiro
+                </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-ios-close-outline"></i>
+                    Sair
+                </a>
+
+            </div>
+        </nav>
+
+        <div class="container" ng-controller="container-controller">
+
+            <div class="card">
+
+                <div class="item item-text-wrap">
+                    <span>bem-vindo(a), {{nome}}</span>
+                </div>
+
+            </div>
+
+            <main ng-view></main>
+
+        </div>
+
+
+</body>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular.route.js"></script>
+<script type="text/javascript" src="js/angular.animate.js"></script>
+<script type="text/javascript" src="js/principal.controllers.js"></script>
+<script type="text/javascript" src="js/principal.config.js"></script>
+<script type="text/javascript" src="js/users.controllers.js"></script>
+<script type="text/javascript" src="js/class.controller.js"></script>
+<script type="text/javascript" src="js/students.controllers.js"></script>
+<script type="text/javascript" src="js/financial.controllers.js"></script>
+<script type="text/javascript" src="js/query.controller.js"></script>
+<script type="text/javascript" src="js/surveys.controller.js"></script>
+<script type="text/javascript" src="js/tools.js"></script>
+
+</html>

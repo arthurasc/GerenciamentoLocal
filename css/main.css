@@ -1,0 +1,125 @@
+/*
+
+    azul: #2980b9
+    cinza cabeçalho: #7f8c8d
+
+*/
+
+html, body
+{
+    height: 100%;
+    overflow-y: auto;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    background: transparent url('../img/pattern-background.jpg') repeat top left;
+}
+
+.login
+{
+    max-width: 350px;
+    padding: 20px 10px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 2px 2px 2px #ccc;
+    margin: 60px auto;
+}
+
+.login figure
+{
+    width: 150px;
+    height: 150px;
+    margin: 0px auto 20px auto;
+    background: transparent url("../img/person-icon.png") no-repeat center center;
+    background-size: 100%;
+}
+
+nav
+{
+    width: 200px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background: #2980b9;
+}
+
+.logo
+{
+    display: block;
+    padding: 80px 0px;
+}
+
+.container
+{
+    margin-left: 200px;
+    width: -webkit-calc(100% - 200px);
+    width: -moz-calc(100% - 200px);
+    height: 100%;
+}
+
+.container .item-text-wrap span
+{
+    color: #7f8c8d;
+}
+
+main
+{
+    max-height: 500px;
+}
+
+.item.ng-leave
+{
+    -webkit-transition: 500ms all;
+    -moz-transition: 500ms all;
+    transition: 500ms all;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.item.ng-leave.ng-leave-active
+{
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+main.ng-enter
+{
+    -webkit-transition: 500ms all;
+    -moz-transition: 500ms all;
+    transition: 500ms all;
+    opacity: 0;
+}
+
+main.ng-enter.ng-enter-active
+{
+    opacity: 1;
+}
+
+.list table
+{
+    width: 100%;
+}
+
+.item .item-button-right table tr td:nth-child(2)
+{
+    width: 230px;
+}
+
+.item .item-button-right table tr td:nth-child(3), .item .item-button-right table tr td:nth-child(4), .item .item-button-right table tr td:nth-child(5)
+{
+    width: 120px;
+    text-align: center;
+}
+
+.query-table tr:nth-child(odd)
+{
+    background: #ecf0f1;
+}
+
+.query-table tr td
+{
+    padding: 10px 5px;
+}
